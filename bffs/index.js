@@ -1,12 +1,15 @@
 const express = require("express");
 const path = require("path");
+const cors = require("cors");
+const nocache = require('nocache');
+
+const db = require("./stormdb");
 const app = express();
 const PORT = process.env.PORT || 3000;
-const db = require("./stormdb");
-const cors = require("cors");
 
 app.use(cors());
 app.use(express.json());
+app.use(nocache());
 
 function success(res, payload) {
   return res.status(200).json(payload);
