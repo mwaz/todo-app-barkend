@@ -64,6 +64,9 @@ app.use((err, req, res, next) => {
 // Have Node serve the files for our built React app
 app.use(express.static(path.resolve(__dirname, '../build')));
 
+app.get("/*", function (req, res) {
+  res.sendFile(path.resolve(__dirname, '../build', 'index.html'));
+})
 
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);
