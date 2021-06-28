@@ -15,8 +15,6 @@ function success(res, payload) {
   return res.status(200).json(payload);
 }
 
-// Have Node serve the files for our built React app
-app.use(express.static(path.resolve(__dirname, '../build')));
 
 app.get("/todos", async (req, res, next) => {
   try {
@@ -62,6 +60,10 @@ app.use((err, req, res, next) => {
     message: err.message || "there was an error processing request"
   });
 });
+
+// Have Node serve the files for our built React app
+app.use(express.static(path.resolve(__dirname, '../build')));
+
 
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);
