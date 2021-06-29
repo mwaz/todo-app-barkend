@@ -10,9 +10,11 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
+    "chai": "^4.3.4",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "nocache": "^3.0.1",
+    "got": "^11.8.2",
+    "nock": "^13.1.0",
     "nodemon": "^2.0.7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -21,11 +23,13 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "nodemon --exec babel-node bffs/index.js",
+    "start": "node bffs/index.js",
     "start-app": "react-scripts start",
+    "start-api": "nodemon bffs/index.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "homepage": "."
   },
   "eslintConfig": {
     "extends": [

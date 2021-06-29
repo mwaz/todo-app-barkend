@@ -1,7 +1,6 @@
 const express = require("express");
 const path = require("path");
 const cors = require("cors");
-const nocache = require('nocache');
 
 const db = require("./stormdb");
 const app = express();
@@ -9,11 +8,12 @@ const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
-app.use(nocache());
 
 function success(res, payload) {
   return res.status(200).json(payload);
 }
+
+app.use(express.static(path.join(__dirname, '../build')));
 
 
 app.get("/todos", async (req, res, next) => {
@@ -60,9 +60,6 @@ app.use((err, req, res, next) => {
     message: err.message || "there was an error processing request"
   });
 });
-
-// Have Node serve the files for our built React app
-app.use(express.static(path.resolve(__dirname, '../build')));
 
 app.get("/*", function (req, res) {
   res.sendFile(path.resolve(__dirname, '../build', 'index.html'));
