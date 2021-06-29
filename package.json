@@ -20,7 +20,8 @@
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
     "stormdb": "^0.4.1",
-    "web-vitals": "^1.0.1"
+    "web-vitals": "^1.0.1",
+    "woke-dyno": "^0.0.4"
   },
   "scripts": {
     "start": "node bffs/index.js",

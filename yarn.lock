@@ -8653,6 +8653,11 @@ node-environment-flags@^1.0.5:
     object.getownpropertydescriptors "^2.0.3"
     semver "^5.7.0"
 
+node-fetch@^2.6.0:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.1.tgz#045bd323631f76ed2e2b55573394416b639a0052"
+  integrity sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==
+
 node-forge@^0.10.0:
   version "0.10.0"
   resolved "https://registry.yarnpkg.com/node-forge/-/node-forge-0.10.0.tgz#32dea2afb3e9926f02ee5ce8794902691a676bf3"
@@ -12659,6 +12664,13 @@ widest-line@^3.1.0:
   integrity sha512-NsmoXalsWVDMGupxZ5R08ka9flZjjiLvHVAWYOKtiKM8ujtZWr9cRffak+uSE48+Ob8ObalXpwyeUiyDD6QFgg==
   dependencies:
     string-width "^4.0.0"
+
+woke-dyno@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/woke-dyno/-/woke-dyno-0.0.4.tgz#3e5306ab979cbf969c397471c94877d3c73f3946"
+  integrity sha512-KyXoNUau55C1bd7ySWUvHIEVo9PLSEfN0wA8Q2Kkys0H+xP8ODiYX76hYHmVokvWLOuDz/0oSdNm+Z/Mx1GJYA==
+  dependencies:
+    node-fetch "^2.6.0"
 
 word-wrap@^1.2.3, word-wrap@~1.2.3:
   version "1.2.3"

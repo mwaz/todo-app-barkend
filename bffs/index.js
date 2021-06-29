@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const cors = require("cors");
+const wakeDyno = require("woke-dyno");
 
 const db = require("./stormdb");
 const app = express();
@@ -66,6 +67,7 @@ app.get("/*", function (req, res) {
 })
 
 app.listen(PORT, () => {
+  wakeDyno("https://todo-app-barkend.herokuapp.com/todos/").start();
   console.log(`listening on port ${PORT}`);
 });
 
