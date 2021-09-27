@@ -54,33 +54,6 @@ function App() {
   };
 
   return (
-    // <div className="App">
-    //   <div className="wrapper">
-    //     <input
-    //       type="text"
-    //       className="inputField"
-    //       value={todo}
-    //       onChange={({ target }) => setTodo(target.value)}
-    //       placeholder="Enter a todo"
-    //     />
-    //     <button type="button" onClick={createTodo}> <i className="fas fa-plus"> </i>
-    //       Add
-    //     </button>
-    //   {/* </div> */}
-
-    //   <ul className="todoList">
-    //     {todos.length ? todos.map(({ _id, task, completed }, i) => (
-    //       <li
-    //         key={i}
-    //         onClick={e => updateTodo(e, _id)}
-    //         className={completed ? "completed" : ""}
-    //       >
-    //         {task} <span onClick={e => deleteTodo(e, _id)}>X</span>
-    //       </li>
-    //     )): <p>No Todos Yet :(</p>}
-    //   </ul>
-    //   </div>
-    // </div>
 
     <div className="wrapper">
     <header>Todo App</header>
@@ -108,10 +81,6 @@ function App() {
           
         )): <p>No Todos Yet :(</p>}
       </ul>
-    {/* <div className="footer">
-      <span>You have <span className="pendingTasks"></span> pending tasks</span>
-      <button>Clear All</button>
-    </div> */}
   </div>
   );
 }
