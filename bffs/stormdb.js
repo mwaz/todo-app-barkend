@@ -14,14 +14,14 @@ const createTodo = async (todoObject) => {
 
 const getTodo = async (todoItem) => {
     const todo = await db.get('todos')
-        .filter(i => i.task === todoItem )
+        .filter(i => i._id == todoItem)
         .value();
     return todo
 }
 
 const getAllTodos = async () => {
-    const todos = await db.get('todos').state.todos
-    return todos;
+    const todos = await db.get('todos').value();
+    return todos
 }
 
 const updateTodoRecord = async (todoId, newTodoItem) => {
@@ -32,14 +32,22 @@ const updateTodoRecord = async (todoId, newTodoItem) => {
 }
 
 const deleteTodo = async (todoId) => {
-    // const todo = await db.get('todos')
-    // .filter(i => i._id === 9 )
-    
-    // console.log(todo.value(), 'toso')
-    // db.get(todo.value()[0].task)
-    // db.get(todo.value()[0]._id)
+    const todo = await db.get('todos')
+    .filter(i => i._id == todoId)
+   
+    db.get(todo.value()[0]._id).delete(true);
+    db.get(todo.value()[0].task).delete(true);
+    db.get(todo.value()[0].completed).delete(true);
+    db.save();
+
+    // let todoItem = await getTodo(todoId)
+    // db.get(todo[0]).delete();
     // db.get(todo.value()[0].completed)
     // .delete();
+}
+
+const deleteAllTodos = async () => {
+    await db.get('todos').set([]).save();
 }
 
 const getRandomInt = (min, max) => {
@@ -53,5 +61,6 @@ module.exports = {
     getTodo,
     updateTodoRecord,
     deleteTodo,
-    getAllTodos
+    getAllTodos,
+    deleteAllTodos
 }

@@ -1,11 +1,12 @@
 const express = require("express");
 const path = require("path");
 const cors = require("cors");
-const wakeDyno = require("woke-dyno");
 
 const db = require("./stormdb");
 const app = express();
 const PORT = process.env.PORT || 3000;
+const API_URL = "https://todo-app-barkend.herokuapp.com/todos/";
+// const API_URL = `http://localhost:${PORT}/todos/`;
 
 app.use(cors());
 app.use(express.json());
@@ -14,12 +15,21 @@ function success(res, payload) {
   return res.status(200).json(payload);
 }
 
-app.use(express.static(path.join(__dirname, '../build')));
+// app.use(express.static(path.join(__dirname, '../build')));
 
 
 app.get("/todos", async (req, res, next) => {
   try {
     const todos = await db.getAllTodos();
+    return success(res, todos);
+  } catch (err) {
+    next({ status: 400, message: "failed to get todos" });
+  }
+});
+
+app.get("/todos/:id", async (req, res, next) => {
+  try {
+    const todos = await db.getTodo(req.params.id);
     return success(res, todos);
   } catch (err) {
     next({ status: 400, message: "failed to get todos" });
@@ -45,13 +55,22 @@ app.put("/todos/:id", async (req, res, next) => {
     next({ status: 400, message: "failed to update todo" });
   }
 });
+
 app.delete("/todos/:id", async (req, res, next) => {
-  console.log(req.params.id)
   try {
     await db.deleteTodo(req.params.id);
     return success(res, "todo deleted!");
   } catch (err) {
     next({ status: 400, message: "failed to delete todo" });
+  }
+});
+
+app.delete("/todos/", async (req, res, next) => {
+  try {
+    await db.deleteAllTodos();
+    return success(res, "todos deleted!");
+  } catch (err) {
+    next({ status: 400, message: "failed to delete todos" });
   }
 });
 
@@ -67,7 +86,6 @@ app.get("/*", function (req, res) {
 })
 
 app.listen(PORT, () => {
-  wakeDyno("https://todo-app-barkend.herokuapp.com/todos/").start();
   console.log(`listening on port ${PORT}`);
 });
 

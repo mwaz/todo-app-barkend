@@ -32,6 +32,15 @@ function App() {
     try {
       e.stopPropagation();
       await APIHelper.deleteTodo(id);
+      
+      setTodos(todos.filter(({ _id: i }) => id !== i));
+    } catch (err) {}
+  };
+
+  const getTodo = async (e, id) => {
+    try {
+      e.stopPropagation();
+      await APIHelper.getTodoItem(id);
       setTodos(todos.filter(({ _id: i }) => id !== i));
     } catch (err) {}
   };
