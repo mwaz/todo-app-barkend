@@ -15,7 +15,7 @@ function success(res, payload) {
   return res.status(200).json(payload);
 }
 
-// app.use(express.static(path.join(__dirname, '../build')));
+app.use(express.static(path.join(__dirname, '../build')));
 
 
 app.get("/todos", async (req, res, next) => {
